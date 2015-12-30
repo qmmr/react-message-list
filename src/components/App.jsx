@@ -1,27 +1,15 @@
 import React, { Component } from 'react'
+import MessageList from './MessageList.jsx'
 
 export default class App extends Component {
 
 	static displayName = 'App'
 
-	constructor() {
-		super()
-	}
-
-	state = {
-		messages: [
-			'hi there',
-			'how are you?'
-		]
+	constructor(props) {
+		super(props)
 	}
 
 	render() {
-		const nodes = this.state.messages.map((message, idx) => {
-			return <li key={ idx }>{ message }</li>
-		})
-
-		return (
-			<ul>{ nodes }</ul>
-		)
+		return <MessageList />
 	}
 }
