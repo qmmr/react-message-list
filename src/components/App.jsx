@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MessageList from './MessageList.jsx'
+import ChannelList from './ChannelList.jsx'
 
 import { AppBar, Card } from 'material-ui'
 import ThemeManager from 'material-ui/lib/styles/theme-manager'
@@ -28,12 +29,25 @@ export default class App extends Component {
 	}
 
 	render() {
+		const style = {
+			display: 'flex',
+			flexFlow: 'row wrap',
+			maxWidth: 1200,
+			width: '100%',
+			margin: '2rem auto'
+		}
+
 		return (
 			<div>
 				<AppBar title="My first material-ui component!" />
-				<Card>
-					<MessageList />
-				</Card>
+				<div style={ style }>
+					<Card style={{ flexGrow: 1 }}>
+						<ChannelList />
+					</Card>
+					<Card style={{ flexGrow: 2, marginLeft: '2rem' }}>
+						<MessageList />
+					</Card>
+				</div>
 			</div>
 		)
 	}
