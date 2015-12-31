@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Message from './Message.jsx'
+import { List } from 'material-ui'
 
 export default class MessageList extends Component {
 
@@ -22,7 +23,7 @@ export default class MessageList extends Component {
 		})
 
 		return (
-			<ul>{ nodes }</ul>
+			<List>{ nodes }</List>
 		)
 	}
 }

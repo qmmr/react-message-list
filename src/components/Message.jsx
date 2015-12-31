@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { ListItem, Avatar } from 'material-ui'
 
 export default class Message extends Component {
 
@@ -12,6 +13,6 @@ export default class Message extends Component {
 	}
 
 	render() {
-		return <li>{ this.props.message }</li>
+		return <ListItem disabled leftAvatar={ <Avatar>...</Avatar> }>{ this.props.message }</ListItem>
 	}
 }

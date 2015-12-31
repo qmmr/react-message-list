@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MessageList from './MessageList.jsx'
 
-import { AppBar } from 'material-ui'
+import { AppBar, Card } from 'material-ui'
 import ThemeManager from 'material-ui/lib/styles/theme-manager'
 import BaseTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme'
 
@@ -15,13 +15,12 @@ injectTapEventPlugin()
 export default class App extends Component {
 
 	static displayName = 'App'
+	static childContextTypes = {
+		muiTheme: PropTypes.object
+	}
 
 	constructor(props) {
 		super(props)
-	}
-
-	static childContextTypes = {
-		muiTheme: PropTypes.object
 	}
 
 	getChildContext() {
@@ -32,7 +31,9 @@ export default class App extends Component {
 		return (
 			<div>
 				<AppBar title="My first material-ui component!" />
-				<MessageList />
+				<Card>
+					<MessageList />
+				</Card>
 			</div>
 		)
 	}
