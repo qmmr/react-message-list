@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import Message from './Message.jsx'
+import Firebase from 'firebase'
+import _ from 'lodash'
 import { List } from 'material-ui'
+import Message from './Message.jsx'
 
 export default class MessageList extends Component {
 
@@ -8,18 +10,20 @@ export default class MessageList extends Component {
 
 	constructor(props) {
 		super(props)
+		this.firebaseRef = new Firebase('https://message-list-app.firebaseio.com/messages')
+		this.firebaseRef.once('value', dataSnapshot => {
+			let messages = dataSnapshot.val()
+			this.setState({ messages })
+		})
 	}
 
 	state = {
-		messages: [
-			'hi there buddy!',
-			'how are you?'
-		]
+		messages: []
 	}
 
 	render() {
-		const nodes = this.state.messages.map((message, idx) => {
-			return <Message key={ idx } message={ message } />
+		const nodes = this.state.messages.map(({ message, avatar }, idx) => {
+			return <Message key={ idx } message={ message } avatar={ avatar } />
 		})
 
 		return (

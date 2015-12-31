@@ -1,0 +1,16 @@
+{
+    "messages": {
+        "0": {
+            "message": "Hello, this is my first message ever!",
+            "date": "Thu, 31 Dec 2015 19:43:26 GMT",
+            "author": "Marcin Kumorek",
+            "avatar": "https://lh3.googleusercontent.com/-beAQ8NY2bQM/AAAAAAAAAAI/AAAAAAAAABM/W07eekaAhrw/s120-c/photo.jpg"
+        },
+        "1": {
+            "message": "Hello, this is my second message ever!",
+            "date": "Thu, 31 Dec 2015 19:46:26 GMT",
+            "author": "Marcin Kumorek",
+            "avatar": "https://lh3.googleusercontent.com/-beAQ8NY2bQM/AAAAAAAAAAI/AAAAAAAAABM/W07eekaAhrw/s120-c/photo.jpg"
+        }
+    }
+}

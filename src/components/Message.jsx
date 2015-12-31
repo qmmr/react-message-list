@@ -5,6 +5,7 @@ export default class Message extends Component {
 
 	static displayName = 'Message'
 	static propTypes = {
+		avatar: PropTypes.string,
 		message: PropTypes.string
 	}
 
@@ -13,6 +14,8 @@ export default class Message extends Component {
 	}
 
 	render() {
-		return <ListItem disabled leftAvatar={ <Avatar>...</Avatar> }>{ this.props.message }</ListItem>
+		const { avatar, message } = this.props
+
+		return <ListItem disabled leftAvatar={ <Avatar src={ avatar } /> }>{ message }</ListItem>
 	}
 }
