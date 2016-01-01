@@ -1,12 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Card } from 'material-ui'
 
 export default class MessageBox extends Component {
 
 	static displayName = 'MessageBox'
+	static propTypes = {
+		firebaseRef: PropTypes.object
+	}
 
 	constructor(props) {
 		super(props)
+	}
+
+	state = {
+		message: ''
+	}
+
+	handleOnChange = ({ target }) => {
+		this.setState({ message: target.value.trim() })
+	}
+
+	handleOnKeyUp = evt => {
+		let message = evt.target.value.trim()
+		if (evt.keyCode === 13 && message !== '') {
+			evt.preventDefault()
+			this.props.firebaseRef.push({
+				message: this.state.message
+			})
+			this.setState({ message: '' })
+		}
 	}
 
 	render() {
@@ -28,7 +50,7 @@ export default class MessageBox extends Component {
 
 		return (
 			<Card style={ messageBoxContainerStyle }>
-				<textarea style={ textAreaStyle } />
+				<textarea value={ this.state.message } onChange={ this.handleOnChange } onKeyUp={ this.handleOnKeyUp } style={ textAreaStyle } />
 			</Card>
 		)
 	}

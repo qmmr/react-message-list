@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import Firebase from 'firebase'
+
 import MessageList from './MessageList.jsx'
 import ChannelList from './ChannelList.jsx'
 import MessageBox from './MessageBox.jsx'
@@ -23,6 +25,7 @@ export default class App extends Component {
 
 	constructor(props) {
 		super(props)
+		this.firebaseRef = new Firebase('https://message-list-app.firebaseio.com/messages')
 	}
 
 	getChildContext() {
@@ -46,10 +49,10 @@ export default class App extends Component {
 						<ChannelList />
 					</Card>
 					<Card style={{ flexGrow: 2, marginLeft: '2rem' }}>
-						<MessageList />
+						<MessageList firebaseRef={ this.firebaseRef } />
 					</Card>
 				</div>
-				<MessageBox />
+				<MessageBox firebaseRef={ this.firebaseRef } />
 			</div>
 		)
 	}
