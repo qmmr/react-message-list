@@ -12,22 +12,27 @@ export default class MessageList extends Component {
 	constructor(props) {
 		super(props)
 
-		this.props.firebaseRef.on('value', dataSnapshot => {
-			let messagesVal = dataSnapshot.val()
-			let messages = Object.keys(messagesVal)
-				.map(key => Object.assign({}, messagesVal[ key ], { key }))
-			this.setState({ messages })
+		this.props.firebaseRef.on('child_added', dataSnapshot => {
+			let val = dataSnapshot.val()
+			let key = dataSnapshot.key()
+			let { messages } = this.state
+
+			if (!messages[ key ]) {
+				val.key = key
+				messages[ key ] = val
+				this.setState({ messages })
+			}
 		})
 	}
 
 	state = {
-		messages: []
+		messages: {}
 	}
 
 	render() {
-		const nodes = this.state.messages.map(({ message, avatar, key }) => {
-			return <Message key={ key } message={ message } avatar={ avatar } />
-		})
+		let nodes = Object.keys(this.state.messages)
+			.map(key => Object.assign({}, this.state.messages[ key ]))
+			.map(({ message, avatar, key }) => <Message key={ key } message={ message } avatar={ avatar } />)
 
 		return (
 			<List>{ nodes }</List>

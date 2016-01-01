@@ -1,5 +1,5 @@
 {
-  "name": "react-stack",
+  "name": "react-message-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -27,7 +27,6 @@
     "babel-preset-stage-1": "^6.3.13",
     "css-loader": "^0.23.1",
     "firebase": "2.3.2",
-    "lodash": "3.10.1",
     "material-ui": "^0.14.0",
     "node-sass": "^3.4.2",
     "react": "^0.14.5",
