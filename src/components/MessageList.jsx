@@ -12,7 +12,7 @@ export default class MessageList extends Component {
 	constructor(props) {
 		super(props)
 
-		this.props.firebaseRef.once('value', dataSnapshot => {
+		this.props.firebaseRef.on('value', dataSnapshot => {
 			let messagesVal = dataSnapshot.val()
 			let messages = Object.keys(messagesVal)
 				.map(key => Object.assign({}, messagesVal[ key ], { key }))

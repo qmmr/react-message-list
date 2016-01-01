@@ -17,7 +17,7 @@ export default class MessageBox extends Component {
 	}
 
 	handleOnChange = ({ target }) => {
-		this.setState({ message: target.value.trim() })
+		this.setState({ message: target.value })
 	}
 
 	handleOnKeyUp = evt => {
@@ -41,16 +41,16 @@ export default class MessageBox extends Component {
 		const textAreaStyle = {
 			border: '1px solid #d0d0d0',
 			borderRadius: '3px',
-			minHeight: 50,
+			fontSize: '0.9rem',
 			outline: 'auto px',
-			padding: '.5rem',
+			padding: '.6rem',
 			resize: 'none',
 			width: '100%'
 		}
 
 		return (
 			<Card style={ messageBoxContainerStyle }>
-				<textarea value={ this.state.message } onChange={ this.handleOnChange } onKeyUp={ this.handleOnKeyUp } style={ textAreaStyle } />
+				<input type="text" value={ this.state.message } onChange={ this.handleOnChange } onKeyUp={ this.handleOnKeyUp } style={ textAreaStyle } />
 			</Card>
 		)
 	}
